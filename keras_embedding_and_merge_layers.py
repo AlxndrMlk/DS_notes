@@ -1,6 +1,7 @@
 # Imports
 from keras.layers import Input, Embedding, Flatten
 from keras.models import Model
+from keras.layers import Subtract
 from numpy import unique
 
 # Count the unique number of teams
@@ -35,3 +36,15 @@ team_1_strength = team_strength_model(team_in_1)
 
 # Lookup team 2 in the team strength model
 team_2_strength = team_strength_model(team_in_2)
+
+# Create a subtract layer using the inputs from the previous exercise
+score_diff = Subtract()([team_1_strength, team_2_strength])
+
+# Subtraction layer from previous exercise
+score_diff = Subtract()([team_1_strength, team_2_strength])
+
+# Create the model
+model = Model([team_in_1, team_in_2], score_diff)
+
+# Compile the model
+model.compile('adam', 'mean_absolute_error')
