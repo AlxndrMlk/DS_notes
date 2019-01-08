@@ -62,3 +62,12 @@ model.fit([input_1, input_2],
           batch_size=2048,
           validation_split=.1,
           verbose=True)
+
+# Get team_1 from the tournament data
+input_1_eval = games_tourney['team_1']
+
+# Get team_2 from the tournament data
+input_2_eval = games_tourney['team_2']
+
+# Evaluate the model using these inputs
+model.evaluate([input_1_eval, input_2_eval], games_tourney['score_diff'])
