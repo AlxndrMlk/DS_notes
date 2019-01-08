@@ -23,3 +23,15 @@ strength_lookup_flat = Flatten()(strength_lookup)
 
 # Combine the operations into a single, re-usable model
 team_strength_model = Model(teamid_in, strength_lookup_flat, name='Team-Strength-Model')
+
+# Input layer for team 1
+team_in_1 = Input(shape=(1,), name='Team-1-In')
+
+# Separate input layer for team 2
+team_in_2 = Input(shape=(1,), name='Team-2-In')
+
+# Lookup team 1 in the team strength model
+team_1_strength = team_strength_model(team_in_1)
+
+# Lookup team 2 in the team strength model
+team_2_strength = team_strength_model(team_in_2)
