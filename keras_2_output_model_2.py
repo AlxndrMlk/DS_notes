@@ -22,3 +22,7 @@ model.fit(games_tourney_train[['seed_diff', 'pred']],
           epochs=10,
           verbose=True,
           batch_size=16384)
+
+# Evaluate the model on new data
+model.evaluate(games_tourney_test[['seed_diff', 'pred']],
+               [games_tourney_test[['score_diff']], games_tourney_test[['won']]])
